@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/movie/love-africa", {data:[{}],fetch:{},mutations:[]});

@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/series/love-africa", {data:[{}],fetch:{},mutations:[]});

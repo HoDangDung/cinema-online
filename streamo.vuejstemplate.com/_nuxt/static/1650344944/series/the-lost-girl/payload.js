@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/series/the-lost-girl", {data:[{}],fetch:{},mutations:[]});

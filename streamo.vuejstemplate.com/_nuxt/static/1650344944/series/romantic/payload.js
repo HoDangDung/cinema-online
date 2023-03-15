@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/series/romantic", {data:[{}],fetch:{},mutations:[]});

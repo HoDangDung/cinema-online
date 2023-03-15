@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/series/two-shot-lead", {data:[{}],fetch:{},mutations:[]});

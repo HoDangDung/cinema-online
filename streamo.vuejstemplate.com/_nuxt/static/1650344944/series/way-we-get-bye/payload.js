@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/series/way-we-get-bye", {data:[{}],fetch:{},mutations:[]});

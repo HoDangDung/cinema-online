@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/series/the-adrift", {data:[{}],fetch:{},mutations:[]});

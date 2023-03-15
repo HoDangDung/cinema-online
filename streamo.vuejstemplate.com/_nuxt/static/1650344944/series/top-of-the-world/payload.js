@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/series/top-of-the-world", {data:[{}],fetch:{},mutations:[]});

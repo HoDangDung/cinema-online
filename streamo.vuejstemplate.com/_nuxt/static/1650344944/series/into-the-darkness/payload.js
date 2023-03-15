@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/series/into-the-darkness", {data:[{}],fetch:{},mutations:[]});
