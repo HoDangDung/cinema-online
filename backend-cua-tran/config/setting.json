@@ -1,0 +1,12 @@
+{
+    "mongodb": {
+        "username": "sa",
+        "password": "sa",
+        "database": "cinema-online"
+    },
+
+    "jwt": {
+        "secret": "goK!pusp6ThEdURUtRenOwUhAsWUCLheBazl!uJLPlS8EbreWLdrupIwabRAsiBu"
+    }
+}
+
