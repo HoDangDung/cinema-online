@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/series/silkovettes-in-the-attic", {data:[{}],fetch:{},mutations:[]});

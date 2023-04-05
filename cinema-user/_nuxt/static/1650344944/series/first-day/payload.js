@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/series/first-day", {data:[{}],fetch:{},mutations:[]});

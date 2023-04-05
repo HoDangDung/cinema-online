@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/series/two-paglo", {data:[{}],fetch:{},mutations:[]});

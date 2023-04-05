@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/series/she-film", {data:[{}],fetch:{},mutations:[]});

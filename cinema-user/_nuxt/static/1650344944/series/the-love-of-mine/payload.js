@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/series/the-love-of-mine", {data:[{}],fetch:{},mutations:[]});

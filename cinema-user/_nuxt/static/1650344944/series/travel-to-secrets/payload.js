@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/series/travel-to-secrets", {data:[{}],fetch:{},mutations:[]});

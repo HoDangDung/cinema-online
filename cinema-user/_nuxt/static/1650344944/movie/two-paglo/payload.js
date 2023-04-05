@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/movie/two-paglo", {data:[{}],fetch:{},mutations:[]});

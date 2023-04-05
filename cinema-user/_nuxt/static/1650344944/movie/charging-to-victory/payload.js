@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/movie/charging-to-victory", {data:[{}],fetch:{},mutations:[]});

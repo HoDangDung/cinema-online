@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/movie/the-lost-girl", {data:[{}],fetch:{},mutations:[]});
