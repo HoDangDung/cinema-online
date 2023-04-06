@@ -27,10 +27,10 @@ router.post("/insert-genre", async function (req, res) {
     res.json({ status: true, message: "" });
 });
 
-router.post("/update-genre", async function (req, res) {
+router.put("/update-genre", async function (req, res) {
     var genreService = new GenreService();
     var genre = new Genre();
-    genre._id = new ObjectId(req.body.Id);
+    genre._id = new ObjectId(req.body.id);
     genre.name = req.body.name;
     await genreService.updateGenre(genre);
     res.json({ status: true, message: "" });

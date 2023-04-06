@@ -7,7 +7,7 @@ class CinemaRoomService {
     client;
     cinemaroomDatabase;
     cinemaroomCollection;
-    constructor() {
+    constructor () {
         this.client = this.databaseConnection.getMongoClient();
         this.cinemaroomDatabase = this.client.db(config.mongodb.database);
         this.cinemaroomCollection = this.cinemaroomDatabase.collection("cinemaroom");
@@ -16,6 +16,7 @@ class CinemaRoomService {
         return await this.cinemaroomCollection.deleteOne({ "_id": new ObjectId(id) });
     }
     async updateCinemaRoom(cinemaroom) {
+        console.log(cinemaroom._id, cinemaroom);
         return await this.cinemaroomCollection.updateOne({ "_id": new ObjectId(cinemaroom._id) }, { $set: cinemaroom });
     }
     async insertCinemaRoom(cinemaroom) {
