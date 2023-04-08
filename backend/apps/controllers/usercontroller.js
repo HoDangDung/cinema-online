@@ -22,9 +22,8 @@ router.get("/get-user", async function (req, res) {
 router.post("/insert-user", async function (req, res) {
     var userService = new UserService();
     var user = new User();
-    user.account = req.body.account;
-    user.pass = req.body.pass;
     user.email = req.body.email;
+    user.pass = req.body.pass;
     user.name = req.body.name;
     user.phone = req.body.phone;
     user.birthday = req.body.birthday;
@@ -36,9 +35,8 @@ router.post("/update-user", async function (req, res) {
     var userService = new UserService();
     var user = new User();
     user._id = new ObjectId(req.body.Id);
-    user.account = req.body.account;
-    user.pass = req.body.pass;
     user.email = req.body.email;
+    user.pass = req.body.pass;
     user.name = req.body.name;
     user.phone = req.body.phone;
     user.birthday = req.body.birthday;

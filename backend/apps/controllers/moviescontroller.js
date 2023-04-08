@@ -13,6 +13,7 @@ router.get("/movies-list", async function (req, res) {
     var movies = await moviesService.getMoviestList();
     res.json(movies);
 });
+
 router.get("/get-movies", async function (req, res) {
     var moviesService = new MoviesService();
     var movies = await moviesService.getMovies(req.query.id);
@@ -23,12 +24,9 @@ router.post("/insert-movies", async function (req, res) {
     var moviesService = new MoviesService();
     var movies = new Movies();
     movies.name = req.body.name;
-    movies.movie_info = req.body.movie_info;
-    movies.genre_id = req.body.genre_id;
-    movies.producer_id = req.body.producer_id;
-    movies.showtimes_id = req.body.showtimes_id;
-    movies.user_id = req.body.user_id;
-    movies.runtime = req.body.runtime;
+    movies.link = req.body.link;
+    movies.poster = req.body.poster;
+    movies.desc = req.body.desc;
     var result = await moviesService.insertMovies(movies);
     res.json({ status: true, message: "" });
 });
@@ -38,12 +36,9 @@ router.put("/update-movies", async function (req, res) {
     var movies = new Movies();
     movies._id = new ObjectId(req.body.Id);
     movies.name = req.body.name;
-    movies.movie_info = req.body.movie_info;
-    movies.genre_id = req.body.genre_id;
-    movies.producer_id = req.body.producer_id;
-    movies.showtimes_id = req.body.showtimes_id;
-    movies.user_id = req.body.user_id;
-    movies.runtime = req.body.runtime;
+    movies.link = req.body.link;
+    movies.poster = req.body.poster;
+    movies.desc = req.body.desc;
     await moviesService.updateMovies(movies);
     res.json({ status: true, message: "" });
 });

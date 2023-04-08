@@ -1,8 +1,7 @@
 class User {
     _id;
-    account;
-    pass;
     email;
+    pass;
     name;
     phone;
     birthday;
