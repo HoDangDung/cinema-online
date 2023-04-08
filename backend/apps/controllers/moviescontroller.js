@@ -33,7 +33,7 @@ router.post("/insert-movies", async function (req, res) {
     res.json({ status: true, message: "" });
 });
 
-router.post("/update-movies", async function (req, res) {
+router.put("/update-movies", async function (req, res) {
     var moviesService = new MoviesService();
     var movies = new Movies();
     movies._id = new ObjectId(req.body.Id);
