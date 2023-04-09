@@ -1,13 +1,13 @@
 getMovies();
 
 // request API get all movies
-function getMovies() {
-    apiGetMovie()
+function getMovies(search) {
+    apiGetMovie(search)
         .then((response) => {
             console.log(response.data);
             if (response.data) {
                 let movies = response.data.map(movie => {
-                    return new Movie(movie._id, movie.name, movie.poster, movie.link, movie.desc)
+                    return new Movie(movie._id, movie.name, movie.poster, movie.link, movie.times, movie.desc)
                 });
 
                 // Hiển thị danh sách phim ra giao diện
@@ -49,8 +49,8 @@ function deleteMovie(id) {
 }
 
 // Request api to update one movie
-function updateMovie(id, movie) {
-    apiUpdateMovie(id, movie)
+function updateMovie(update) {
+    apiUpdateMovie(update)
         .then(() => {
             getMovies();
             alert("Cập nhật thành công!!!!");
@@ -71,6 +71,7 @@ function dom(params) {
 const restForm = () => {
     dom('#name').value = '';
     dom('#img').value = '';
+    dom('#times').value = '';
     dom('#link').value = '';
     dom('#desc').value = '';
 }
@@ -86,6 +87,7 @@ function display(movies) {
             <td>
                 <img src=${movie.poster} width="50px" height="50px" />
             </td>
+            <td>${movie.times} minutes</td>
             <td>
                 <div class="an">
                     ${movie.desc}</td>
@@ -138,19 +140,23 @@ dom(".modal-footer").addEventListener("click", (evt) => {
     let elementType = evt.target.getAttribute("data-type");
 
     // DOM all form input to get data from user
-    let name = dom('#name').value,
+    let id = dom("#id").value,
+        name = dom('#name').value,
         img = dom('#img').value,
+        times = ('#times').value,
         link = dom('#link').value,
         desc = dom('#desc').value;
 
-    let movie = new Movie(null, name, img, link, desc);
+    let movie = new Movie(null, name, img, link, times, desc);
+    let update = new Movie(id, name, img, link, times, desc);
 
     if (elementType == "add") {
         addMovie(movie);
     }
 
     if (elementType == "update") {
-        updateMovie(id, movie);
+        console.log(update);
+        updateMovie(update);
     }
 })
 // ============= End Model Form =================
@@ -164,6 +170,7 @@ dom("#tblDanhSachPhim").addEventListener("click", (evt) => {
 
     let id = evt.target.getAttribute("data-id");
     let elementType = evt.target.getAttribute("data-type");
+    console.log(id);
 
     if (elementType == "delete") {
         deleteMovie(id);
@@ -183,9 +190,10 @@ dom("#tblDanhSachPhim").addEventListener("click", (evt) => {
                 let movie = response.data;
 
                 // Fill information of the movie want update to form input
-                dom("#id").value = movie.id; // hidden input
+                dom("#id").value = movie._id; // disable input
                 dom('#name').value = movie.name;
-                dom('#img').value = movie.img;
+                dom('#img').value = movie.poster;
+                dom('#times').value = movie.times;
                 dom('#link').value = movie.link;
                 dom('#desc').value = movie.desc;
             })
@@ -196,3 +204,11 @@ dom("#tblDanhSachPhim").addEventListener("click", (evt) => {
 })
 
 // =========== End Tbody #tblDanhSachPhim ==========
+
+dom("#search").addEventListener("keydown", (evt) => {
+    console.log(evt.key);
+    if (evt.key !== "Enter") {
+        return;
+    }
+    getMovies(evt.target.value);
+})

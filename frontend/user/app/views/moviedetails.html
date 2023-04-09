@@ -1,87 +1,152 @@
-<?php
-include 'shares/header.php';
-?>
-<section class="details-banner" style="background:url('https://images.unsplash.com/photo-1458053688450-eef5d21d43b3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fGNpbmVtYSUyMHJvb218ZW58MHx8MHx8&w=1000&q=80')">
-    <div class="container">
-        <div class="details-banner-wrapper">
-            <?php foreach ($movies as $mv) { ?>
-                <div class="details-banner-thumb">
-                    <img src="<?php echo $mv['poster']; ?>" alt="movie" />
-                    <a href="https://www.youtube.com/watch?v=<?php echo $mv['link'] ?>" class="video-button video-popup">
-                        <i class="fal fa-play"></i>
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <title>Website xem phim</title>
+    <link
+      rel="shortcut icon"
+      href="assets/img/icon.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css" />
+    <link rel="stylesheet" href="assets/css/animate.css" />
+    <link rel="stylesheet" href="assets/css/magnific-popup.css" />
+    <link rel="stylesheet" href="assets/css/odometer.css" />
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="assets/css/nice-select.css" />
+    <link rel="stylesheet" href="assets/css/jquery.animatedheadline.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+      <div class="overlay"></div>
+      <a href="#" class="scrollToTop">
+        <i class="fal fa-long-arrow-alt-up"></i>
+      </a>
+      <header class="header-section">
+        <div class="container">
+          <div class="header-wrapper">
+            <div class="logo">
+              <a href="home.html">
+                <img src="assets/img/logo/logo.png" alt="logo" />
+              </a>
+            </div>
+            <ul class="menu">
+              <li>
+                <a href="home.html" class="active">Home</a>
+              </li>
+              <li>
+                <a href="#">Cá nhân</a>
+                <ul class="submenu">
+                  <li>
+                    <a href="#"
+                      ><i class="fal fa-long-arrow-alt-right"></i>Tài khoản:
                     </a>
-                </div>
-                <div class="details-banner-content offset-lg-4">
-                    <h3 class="title"><?php echo $mv['movieName']; ?></h3>
-                    <div class="tags">
-                        <a href="#">2D</a>
-                    </div>
-                    <a href="#" class="button"><?php echo $mv['type'] ?></a>
-                    <div class="social-and-duration">
-                        <div class="duration-area">
-                            <div class="item">
-                                <i class="fal fa-clock"></i><span><?php echo $movie['time']; ?> phút</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <?php } ?>
-        </div>
-    </div>
-</section>
-
-
-<section class="book-section">
-    <div class="container">
-        <div class="book-wrapper offset-lg-4">
-            <div class="left-side">
-                <div class="item">
-                    <div class="item-header">
-                        <h5 class="title">5.0</h5>
-                        <div class="rated">
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="item-header">
-                        <div class="rated rate-it">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h5 class="title">0.0</h5>
-                    </div>
-                </div>
+                  </li>
+                  <li>
+                    <a href="?route=logout"
+                      ><i class="fal fa-long-arrow-alt-right"></i>Đăng xuất</a
+                    >
+                  </li>
+                  <li>
+                    <a href="?route=login"
+                      ><i class="fal fa-long-arrow-alt-right"></i>Đăng nhập</a
+                    >
+                  </li>
+                  <li>
+                    <a href="?route=register"
+                      ><i class="fal fa-long-arrow-alt-right"></i>Đăng ký</a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <div class="header-bar d-lg-none">
+              <span></span>
+              <span></span>
+              <span></span>
             </div>
+          </div>
         </div>
+      </header>
+    <section
+      class="details-banner"
+      style="
+        background: url('https://images.unsplash.com/photo-1458053688450-eef5d21d43b3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fGNpbmVtYSUyMHJvb218ZW58MHx8MHx8&w=1000&q=80');
+      "
+    >
+    <div id="body">
+      <div class="preloader">
+        <div class="preloader-inner">
+          <div class="preloader-icon">
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
     </div>
-</section>
+     
 
-
-<section class="movie-details-section padding-top padding-bottom">
-    <div class="container" style="padding-top: 10rem;">
-        <div class="row justify-content-center flex-wrap-reverse mb--50">
-            <div class="col-lg-9 mb-50">
-                <div class="movie-details">
-                    <div class="tab summery-review">
-                        <ul class="tab-menu">
-                            <li class="active">Chi tiết</li>
-                        </ul>
-                        <div class="tab-area">
-                            <div class="tab-item active">
-                                <div class="item">
-                                    <p><?php echo $movie['description']; ?></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <footer class="footer-section">
+      <div class="container">
+        <div class="footer-bottom">
+          <div class="footer-bottom-area">
+            <div class="left">
+              <p>
+                Nhóm GI @
+                <script>
+                  document.write(new Date().getFullYear());
+                </script>
+              </p>
             </div>
+            <ul class="links">
+              <li>
+                <a href="#">About</a>
+              </li>
+            </ul>
+          </div>
         </div>
-    </div>
-</section>
-<?php
-include_once('shares/footer.php');
+      </div>
+    </footer>
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+      ></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/include-html.min.js"></script>
+    <script src="assets/js/modernizr-3.6.0.min.js"></script>
+    <script src="assets/js/plugins.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/heandline.js"></script>
+    <script src="assets/js/isotope.pkgd.min.js"></script>
+    <script src="assets/js/magnific-popup.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/countdown.min.js"></script>
+    <script src="assets/js/odometer.min.js"></script>
+    <script src="assets/js/viewport.jquery.js"></script>
+    <script src="assets/js/nice-select.js"></script>
+
+    <script src="../services/moivesAPI.js"></script>
+    <script src="../models/MovieModel.js"></script>
+    <script src="../controllers/moviedetailsController.js"></script>
+  </body>
+</html>

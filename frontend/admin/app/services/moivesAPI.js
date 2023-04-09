@@ -1,8 +1,10 @@
-function apiGetMovie() {
+function apiGetMovie(search) {
     return axios({
         url: "http://localhost:3000/movies/movies-list",
         method: "GET",
-        // Những giá trị được định nghĩa trong object params sẽ được thêm vào url: ?key = value
+        params: {
+            name: search
+        },
     });
 }
 
@@ -21,16 +23,16 @@ function apiDeleteMovie(id) {
     });
 }
 
-function apiGetMovieById(id){
+function apiGetMovieById(id) {
     return axios({
         url: `http://localhost:3000/movies/get-movies?id=${id}`,
         method: "GET",
     });
 }
 
-function apiUpdateMovie(id, movie) {
+function apiUpdateMovie(movie) {
     return axios({
-        url: `http://localhost:3000/movies/update-movie?id=${id}`,
+        url: `http://localhost:3000/movies/update-movie`,
         method: "PUT",
         data: movie,
     });

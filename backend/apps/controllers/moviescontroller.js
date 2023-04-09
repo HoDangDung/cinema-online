@@ -25,18 +25,20 @@ router.post("/insert-movies", async function (req, res) {
     var movies = new Movies();
     movies.name = req.body.name;
     movies.link = req.body.link;
+    movies.times = req.body.times;
     movies.poster = req.body.poster;
     movies.desc = req.body.desc;
     var result = await moviesService.insertMovies(movies);
     res.json({ status: true, message: "" });
 });
 
-router.put("/update-movies", async function (req, res) {
+router.post("/update-movies", async function (req, res) {
     var moviesService = new MoviesService();
     var movies = new Movies();
     movies._id = new ObjectId(req.body.Id);
     movies.name = req.body.name;
     movies.link = req.body.link;
+    movies.times = req.body.times;
     movies.poster = req.body.poster;
     movies.desc = req.body.desc;
     await moviesService.updateMovies(movies);

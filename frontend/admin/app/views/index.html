@@ -41,9 +41,7 @@
               <a class="nav-link" href="genre.html">Genre</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="user.html"
-                >User</a
-              >
+              <a class="nav-link" href="user.html">User</a>
             </li>
           </ul>
         </div>
@@ -55,14 +53,14 @@
       <!-- Phan tab menu -->
       <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a
-              class="nav-link active"
-              href="#DanhSachSP"
-              role="tab"
-              data-toggle="tab"
-              >Danh sách Phim</a
-            >
-          </li>
+          <a
+            class="nav-link active"
+            href="#DanhSachSP"
+            role="tab"
+            data-toggle="tab"
+            >Danh sách Phim</a
+          >
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="genre.html">Danh sách Thể loại</a>
         </li>
@@ -93,6 +91,7 @@
               <!-- BEGIN TÌM KIẾM -->
               <div class="input-group mb-3">
                 <input
+                  id="search"
                   type="text"
                   class="form-control"
                   placeholder="Nhập từ khóa"
@@ -117,12 +116,28 @@
                 <th>Tên Phim</th>
                 <th style="width: 20%">Thể Loại</th>
                 <th>Hình Ảnh</th>
+                <th>Thời gian</th>
                 <th style="width: 30%">Mô Tả</th>
                 <th>Link</th>
                 <th></th>
                 <th></th>
               </thead>
-              <tbody id="tblDanhSachPhim"></tbody>
+              <tbody id="tblDanhSachPhim">
+                <tr></tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>
+                    <div class="loader"></div>
+                  </td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
             </table>
             <!-- END TABLE SẢN PHẨM -->
           </div>
@@ -146,7 +161,10 @@
             </div>
             <!-- Modal body -->
             <div class="modal-body">
-              <input hidden id="id" />
+              <div class="form-group">
+                <label>Mã Phim</label>
+                <input id="id" class="form-control" disabled />
+              </div>
               <div class="form-group">
                 <label>Tên Phim</label>
                 <input
@@ -161,6 +179,14 @@
                   id="img"
                   class="form-control"
                   placeholder="Nhập vào hình phim"
+                />
+              </div>
+              <div class="form-group">
+                <label>Thời gian</label>
+                <input
+                  id="times"
+                  class="form-control"
+                  placeholder="Nhập vào thời gian phim"
                 />
               </div>
               <div class="form-group">
@@ -195,10 +221,6 @@
       </div>
     </div>
     <div id="container"></div>
-
-    <div class="loader-wrapper">
-      <span class="loader"><span class="loader-inner"></span></span>
-    </div>
 
     <script
       src="https://code.jquery.com/jquery-3.3.1.min.js"
