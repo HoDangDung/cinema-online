@@ -34,7 +34,7 @@
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item">
               <a class="nav-link" href="index.html"
-                >Home <span class="sr-only">(current)</span></a
+                >Movie <span class="sr-only">(current)</span></a
               >
             </li>
             <li class="nav-item">
@@ -83,6 +83,7 @@
               <!-- BEGIN TÌM KIẾM -->
               <div class="input-group mb-3">
                 <input
+                id="search"
                   type="text"
                   class="form-control"
                   placeholder="Nhập từ khóa"
@@ -109,8 +110,22 @@
                 <th>Password</th>
                 <th>Phone</th>
                 <th>Birthday</th>
+                <th></th>
               </thead>
-              <tbody id="tblDanhSachUser"></tbody>
+              <tbody id="tblDanhSachUser">
+                <tr></tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>
+                    <div class="loader"></div>
+                  </td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
             </table>
             <!-- END TABLE SẢN PHẨM -->
           </div>
@@ -123,10 +138,6 @@
 
     </div>
     <div id="container"></div>
-
-    <div class="loader-wrapper">
-      <span class="loader"><span class="loader-inner"></span></span>
-    </div>
 
     <script
       src="https://code.jquery.com/jquery-3.3.1.min.js"

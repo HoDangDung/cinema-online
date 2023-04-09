@@ -34,16 +34,14 @@
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item">
               <a class="nav-link" href="index.html"
-                >Home <span class="sr-only">(current)</span></a
+                >Movie <span class="sr-only">(current)</span></a
               >
             </li>
             <li class="nav-item active">
               <a class="nav-link" href="genre.html">Genre</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="user.html"
-                >User</a
-              >
+              <a class="nav-link" href="user.html">User</a>
             </li>
           </ul>
         </div>
@@ -79,7 +77,7 @@
             <div class="col-md-8">
               <!-- BEGIN BUTTOM THÊM MỚI -->
               <button
-                id="btnThemPhim"
+                id="btnThemGenre"
                 class="btn btn-success"
                 data-toggle="modal"
                 data-target="#myModal"
@@ -93,6 +91,7 @@
               <!-- BEGIN TÌM KIẾM -->
               <div class="input-group mb-3">
                 <input
+                id="search"
                   type="text"
                   class="form-control"
                   placeholder="Nhập từ khóa"
@@ -119,7 +118,17 @@
                 <th></th>
                 <th></th>
               </thead>
-              <tbody id="tblDanhSachGenre"></tbody>
+              <tbody id="tblDanhSachGenre">
+                <tr></tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td>
+                    <div class="loader"></div>
+                  </td>
+                  <td></td>
+                </tr>
+              </tbody>
             </table>
             <!-- END TABLE SẢN PHẨM -->
           </div>
@@ -143,7 +152,14 @@
             </div>
             <!-- Modal body -->
             <div class="modal-body">
-              <input hidden id="id" />
+              <div class="form-group">
+                <label>Mã Thể Loại</label>
+                <input
+                  id="id"
+                  class="form-control"
+                  disabled
+                />
+              </div>
               <div class="form-group">
                 <label>Tên Thể Loại</label>
                 <input
@@ -160,11 +176,6 @@
       </div>
     </div>
     <div id="container"></div>
-
-    <div class="loader-wrapper">
-      <span class="loader"><span class="loader-inner"></span></span>
-    </div>
-
     <script
       src="https://code.jquery.com/jquery-3.3.1.min.js"
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="

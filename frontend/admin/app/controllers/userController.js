@@ -18,6 +18,18 @@ function getUser() {
         });
 }
 
+function deleteUser(id) {
+    apiDeleteUser(id)
+        .then(() => {
+            alert("Xóa thành công!!!");
+            getUser();
+        })
+        .catch((error) => {
+            console.log(error);
+            alert("Xóa không thành công!!!");
+        })
+}
+
 function dom(params) {
     return document.querySelector(params);
 }
@@ -32,8 +44,34 @@ function display(users) {
             <td>${user.pass}</td>
             <td>${user.phone}</td>
             <td>${user.birthday}</td>
+            <td>
+                <button 
+                    class="btn btn-danger" 
+                    data-type = "delete" 
+                    data-id = "${user.id}"
+                    >
+                    Xóa
+                </button>
+            </td>
         </tr>
         `;
     }, "");
     dom("#tblDanhSachUser").innerHTML = output;
 }
+
+dom("#tblDanhSachUser").addEventListener("click", (evt) => {
+    let id = evt.target.getAttribute("data-id");
+    let elementType = evt.target.getAttribute("data-type");
+
+    if (elementType == "delete") {
+        deleteUser(id);
+    }
+})
+
+dom("#search").addEventListener("keydown", (evt) => {
+    console.log(evt.key);
+    if (evt.key !== "Enter") {
+        return;
+    }
+    getUser(evt.target.value);
+})

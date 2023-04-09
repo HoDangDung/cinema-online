@@ -7,7 +7,7 @@ class MoviesService {
     client;
     moviesDatabase;
     moviesCollection;
-    constructor() {
+    constructor () {
         this.client = this.databaseConnection.getMongoClient();
         this.moviesDatabase = this.client.db(config.mongodb.database);
         this.moviesCollection = this.moviesDatabase.collection("movies");
@@ -18,6 +18,11 @@ class MoviesService {
     async updateMovies(movies) {
         return await this.moviesCollection.updateOne({ "_id": new ObjectId(movies._id) }, { $set: movies });
     }
+
+    async updateMoviesById(movies) {
+        return await this.moviesCollection.updateOne({ "_id": new ObjectId(movies._id) }, { $set: { name: movies.name, link: movies.link, times: movies.times, poster: movies.poster, desc: movies.desc } });
+    }
+
     async insertMovies(movies) {
         return await this.moviesCollection.insertOne(movies);
     }

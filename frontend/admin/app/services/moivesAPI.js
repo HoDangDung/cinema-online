@@ -30,9 +30,9 @@ function apiGetMovieById(id) {
     });
 }
 
-function apiUpdateMovie(movie) {
+function apiUpdateMovie(id,movie) {
     return axios({
-        url: `http://localhost:3000/movies/update-movie`,
+        url: `http://localhost:3000/movies/update-movies/${id}`,
         method: "PUT",
         data: movie,
     });

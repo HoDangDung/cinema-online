@@ -27,13 +27,18 @@ router.post("/insert-genre", async function (req, res) {
     res.json({ status: true, message: "" });
 });
 
-router.put("/update-genre", async function (req, res) {
+router.put("/update-genre/:id", async function (req, res) {
     var genreService = new GenreService();
     var genre = new Genre();
-    genre._id = new ObjectId(req.body.id);
+    genre._id = req.params.id;
     genre.name = req.body.name;
-    await genreService.updateGenre(genre);
-    res.json({ status: true, message: "" });
+    console.log(genre._id, genre.name);
+    try {
+        const temp = await genreService.updateGenreById(genre);
+        res.json({ status: true, message: temp });
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
 });
 
 router.delete("/delete-genre", async function (req, res) {

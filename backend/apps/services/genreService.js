@@ -18,6 +18,11 @@ class GenreService {
     async updateGenre(genre) {
         return await this.genreCollection.updateOne({ "_id": new ObjectId(genre._id) }, { $set: genre });
     }
+
+    async updateGenreById(genre) {
+        return await this.genreCollection.updateOne({ "_id": new ObjectId(genre._id)},{$set: {name: genre.name}});
+    }
+
     async insertGenre(genre) {
         return await this.genreCollection.insertOne(genre);
     }

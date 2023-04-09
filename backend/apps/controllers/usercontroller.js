@@ -31,17 +31,21 @@ router.post("/insert-user", async function (req, res) {
     res.json({ status: true, message: "" });
 });
 
-router.post("/update-user", async function (req, res) {
+router.put("/update-user/:id", async function (req, res) {
     var userService = new UserService();
     var user = new User();
-    user._id = new ObjectId(req.body.Id);
+    user._id = req.params.Id;
     user.email = req.body.email;
     user.pass = req.body.pass;
     user.name = req.body.name;
     user.phone = req.body.phone;
     user.birthday = req.body.birthday;
-    await userService.updateUser(user);
-    res.json({ status: true, message: "" });
+    try {
+        const temp = await userService.updateUserById(user);
+        res.json({ status: true, message: temp });
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
 });
 
 router.delete("/delete-user", async function (req, res) {

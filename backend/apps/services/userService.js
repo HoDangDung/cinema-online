@@ -18,6 +18,11 @@ class UserService {
     async updateUser(user) {
         return await this.userCollection.updateOne({ "_id": new ObjectId(user._id) }, { $set: user });
     }
+
+    async updateUserById(user) {
+        return await this.userCollection.updateOne({ "_id": new ObjectId(user._id) }, { $set: {email:user.email, pass:user.pass,name:user.name, phone:user.phone, birthday:user.birthday} });
+    }
+
     async insertUser(user) {
         return await this.userCollection.insertOne(user);
     }

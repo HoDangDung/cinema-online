@@ -32,17 +32,23 @@ router.post("/insert-movies", async function (req, res) {
     res.json({ status: true, message: "" });
 });
 
-router.post("/update-movies", async function (req, res) {
+router.put("/update-movies/:id", async function (req, res) {
     var moviesService = new MoviesService();
     var movies = new Movies();
-    movies._id = new ObjectId(req.body.Id);
+    movies._id = req.params.id;
     movies.name = req.body.name;
     movies.link = req.body.link;
     movies.times = req.body.times;
     movies.poster = req.body.poster;
     movies.desc = req.body.desc;
-    await moviesService.updateMovies(movies);
-    res.json({ status: true, message: "" });
+    console.log(movies._id);
+    try {
+        const temp = await moviesService.updateMoviesById(movies);
+        res.json({ status: true, message: temp });
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+
 });
 
 router.delete("/delete-movies", async function (req, res) {

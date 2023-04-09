@@ -49,8 +49,8 @@ function deleteMovie(id) {
 }
 
 // Request api to update one movie
-function updateMovie(update) {
-    apiUpdateMovie(update)
+function updateMovie(id, movie) {
+    apiUpdateMovie(id, movie)
         .then(() => {
             getMovies();
             alert("Cập nhật thành công!!!!");
@@ -69,6 +69,7 @@ function dom(params) {
 
 // reset form input to null
 const restForm = () => {
+    dom("#id").value = '';
     dom('#name').value = '';
     dom('#img').value = '';
     dom('#times').value = '';
@@ -137,30 +138,46 @@ dom('#btnThemPhim').addEventListener("click", () => {
 // Event lister change model footer when click
 dom(".modal-footer").addEventListener("click", (evt) => {
 
+    let dismiss = evt.target.getAttribute("data-dismiss");
     let elementType = evt.target.getAttribute("data-type");
 
     // DOM all form input to get data from user
     let id = dom("#id").value,
         name = dom('#name').value,
         img = dom('#img').value,
-        times = ('#times').value,
+        times = dom('#times').value,
         link = dom('#link').value,
         desc = dom('#desc').value;
+        console.log(times);
 
     let movie = new Movie(null, name, img, link, times, desc);
-    let update = new Movie(id, name, img, link, times, desc);
 
     if (elementType == "add") {
         addMovie(movie);
+        restForm();
     }
 
     if (elementType == "update") {
-        console.log(update);
-        updateMovie(update);
+        console.log(movie);
+        updateMovie(id, movie);
+        restForm();
+    }
+
+    // When click button close in modal-footer, all form input will resetForm()
+    if (dismiss == "modal") {
+        restForm();
     }
 })
 // ============= End Model Form =================
 
+// When click outside modal, all form input will resetForm()
+dom("#myModal").addEventListener("click", (evt)=>{
+    let modal = evt.target.getAttribute("id");
+
+    if (modal =="myModal") {
+        restForm();
+    }
+})
 
 // =========== Tbody #tblDanhSachPhim ==========
 
@@ -184,7 +201,6 @@ dom("#tblDanhSachPhim").addEventListener("click", (evt) => {
             <button class="btn btn-danger" data-dismiss="modal">Close</button>
             <button class="btn btn-primary" data-type = "update">Update Movie</button>
         `
-
         apiGetMovieById(id)
             .then((response) => {
                 let movie = response.data;
